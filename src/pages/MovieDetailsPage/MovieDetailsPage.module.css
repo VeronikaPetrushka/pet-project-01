@@ -1,0 +1,113 @@
+.movieDetailsBack {
+    color: black;
+    font-family: "Peralta", serif;
+    font-weight: 400;
+    font-style: normal;
+    padding: 20px;
+    margin: 5px 20px;
+    z-index: 999;
+    right: 0;
+    top: 0;
+    position: fixed;
+}
+
+.movieDetailsName {
+    color: black;
+    margin: 100px 0 0 0;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 700;
+    font-style: normal;
+}
+
+.movieDetailsContainer {
+    margin-top: 60px;
+    display: flex;
+    gap: 100px;
+    justify-content: center;
+    align-items: center;
+}
+
+.moviePosterBox {
+    width: 350px;
+    height: 500px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 8px;
+    overflow: hidden;
+}
+
+.moviePoster {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.MDBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    margin-top: 40px;
+    border: 2px solid rgb(13, 10, 209);
+    border-radius: 8px;
+    box-shadow: 10px 10px 20px rgb(77, 77, 77);
+}
+
+.movieDetailTitle {
+    color: black;
+    display: flex;
+    flex-direction: column;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.movieDetail {
+    color: black;
+    margin-top: 10px;
+    text-wrap: wrap;
+    max-width: 600px;
+    font-weight: 400;
+}
+
+.movieMoreBox {
+    align-items: center;
+    border: 2px solid rgb(13, 10, 209);
+    border-radius: 8px;
+    box-shadow: 10px 10px 20px rgb(77, 77, 77);
+    margin-top: 30px;
+    padding: 40px;
+}
+
+.movieMoreList {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 0;
+    border-bottom: 1px solid rgb(13, 10, 209);
+    padding-bottom: 20px;
+}
+
+.movieMoreItem {
+    color: black;
+    font-family: "Lora", serif;
+    font-optical-sizing: auto;
+    font-size: 45;
+    font-weight: 600;
+    font-style: normal;
+}
+
+.movieMoreItem:hover,
+.movieMoreItem:focus {
+    color: white;
+    padding: 8px 16px;
+    border: 1px solid rgb(13, 10, 209);
+    background-color: rgb(13, 10, 209);
+    border-radius: 8px;
+}
