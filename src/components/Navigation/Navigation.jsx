@@ -26,7 +26,7 @@ const Navigation = () => {
         Питання/Відповідь
       </NavLink>
       <NavLink className={css.navLink} to="/ContactUs">
-        Зв`&apos;`затись з нами
+        Зв`&apos;`язатись з нами
       </NavLink>
      </nav>
     )
