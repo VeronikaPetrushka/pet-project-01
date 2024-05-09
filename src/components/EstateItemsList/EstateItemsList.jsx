@@ -1,40 +1,33 @@
-import { useState } from 'react';
 import EstateItem from '../EstateItem/EstateItem';
 import { useSelector, useDispatch } from 'react-redux';
-import { setCategoryFilter, selectCategoryFilter } from '../../redux/filterSlice';
-import { selectItems as items } from '../../redux/filterSlice';
+import { setCategoryFilter } from '../../redux/estateItems/filters';
+import { selectItems, selectCategoryFilter } from '../../redux/estateItems/selectors';
+import { toggleCategoryFilter } from '../../redux/estateItems/operations';
+import { statusFilterbyCategory } from '../../redux/estateItems/constants';
 
 const EstateItemsList = () => {
-  const categoryFilter = useSelector(selectCategoryFilter);
+  const items = useSelector(selectItems);
+  const currentFilter = useSelector(selectCategoryFilter);
   const dispatch = useDispatch();
-  const [categories] = useState(["Commerce", "Buy", "Rent", "New Building"]);
 
   const handleCategoryClick = (category) => {
-    dispatch(setCategoryFilter(category));
+    const newFilter = toggleCategoryFilter(currentFilter, category);
+    dispatch(setCategoryFilter(newFilter));
   };
 
   return (
     <div>
-      {categories.map((category) => (
-        <button key={category} onClick={() => handleCategoryClick(category)}>
-          {category}
-        </button>
-      ))}
       <div>
-        {categoryFilter
-          ? items
-              .filter((item) => item.category === categoryFilter)
-              .map((filteredItem) => (
-                <EstateItem
-                  key={filteredItem.id}
-                  picture={filteredItem.picture}
-                  name={filteredItem.name}
-                  price={filteredItem.price}
-                  description={filteredItem.description}
-                  ehome={filteredItem.ehome}
-                />
-              ))
-          : items.map((item) => (
+        <button onClick={() => handleCategoryClick(statusFilterbyCategory.buy)}>Buy</button>
+        <button onClick={() => handleCategoryClick(statusFilterbyCategory.rent)}>Rent</button>
+        <button onClick={() => handleCategoryClick(statusFilterbyCategory.commerce)}>Commerce</button>
+        <button onClick={() => handleCategoryClick(statusFilterbyCategory.newbuild)}>New Building</button>
+      </div>
+      <ul>
+        {items
+          .filter((item) => currentFilter ? item.category === currentFilter : true)
+          .map((item) => (
+            <li key={item.id}>
               <EstateItem
                 key={item.id}
                 picture={item.picture}
@@ -43,8 +36,9 @@ const EstateItemsList = () => {
                 description={item.description}
                 ehome={item.ehome}
               />
-            ))}
-      </div>
+            </li>
+          ))}
+      </ul>
     </div>
   );
 };
