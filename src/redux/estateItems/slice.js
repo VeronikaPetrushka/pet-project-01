@@ -1,4 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
+import { nanoid } from "nanoid";
 import {
   fetchSelectedItem,
   addItem,
@@ -36,7 +37,15 @@ const ItemsSlice = createSlice({
       .addCase(addItem.fulfilled, (state, action) => {
         state.isLoading = false;
         state.error = null;
-        state.items.push(action.payload);
+        const newItem = {
+          id: nanoid(),
+          picture: action.payload.picture,
+          name: action.payload.name,
+          price: action.payload.price,
+          description: action.payload.description,
+          category: action.payload.category,
+        };
+        state.items.push(newItem);
       })
       .addCase(addItem.rejected, handleRejected)
       .addCase(deleteItem.pending, handlePending)

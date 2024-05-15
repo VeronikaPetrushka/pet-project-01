@@ -1,25 +1,32 @@
-// import { configureStore } from "@reduxjs/toolkit";
+import { configureStore } from "@reduxjs/toolkit";
 import { filtersReducer } from "./estateItems/filters";
 import { ItemsReducer } from "./estateItems/slice";
-import { devToolsEnhancer } from "@redux-devtools/extension";
-import { combineReducers, createStore } from "redux";
+// import { devToolsEnhancer } from "@redux-devtools/extension";
+// import { combineReducers, createStore } from "redux";
 
-const enhancer = devToolsEnhancer();
+export const store = configureStore({
+  reducer: {
+    items: ItemsReducer,
+    filters: filtersReducer,
+  },
+});
 
-// export const store = createStore({
+// const enhancer = devToolsEnhancer();
+
+// export const store = configureStore({
 //   reducer: {
 //     objects: ItemsReducer,
 //     filters: filtersReducer,
 //   },
-//   enhancers: enhancer,
+//     enhancers: enhancer,
 // });
 
-const rootReducer = combineReducers({
-  objects: ItemsReducer,
-  filters: filtersReducer,
-});
+// const rootReducer = combineReducers({
+//   objects: ItemsReducer,
+//   filters: filtersReducer,
+// });
 
-export const store = createStore(rootReducer, enhancer);
+// export const store = createStore(rootReducer, enhancer);
 
 // import { configureStore } from "@reduxjs/toolkit";
 // // import {
